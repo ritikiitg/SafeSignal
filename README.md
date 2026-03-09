@@ -12,36 +12,12 @@ SafeSignal is a **speculative near-future wellness platform** that tracks **neur
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        SafeSignal Platform                          │
-│                                                                     │
-│  ┌───────────────────────┐         ┌──────────────────────────┐    │
-│  │    React Frontend     │  API    │     Express Backend       │    │
-│  │   (Vite + TypeScript) │ Proxy   │   (Node.js + TypeScript)  │    │
-│  │                       │────────▶│                            │    │
-│  │  • Landing Page       │         │  • JWT Authentication     │    │
-│  │  • Dashboard (Live)   │         │  • Neuroception Engine    │    │
-│  │  • Reflection (AI)    │         │  • Session Management     │    │
-│  │  • Profile Settings   │         │  • Gemini AI Insights     │    │
-│  │                       │         │                            │    │
-│  │  Zustand State Mgmt   │         │  Prisma ORM ──▶ SQLite    │    │
-│  │  React Query Cache    │         │  Helmet + Rate Limiting   │    │
-│  └───────────┬───────────┘         └──────────────┬─────────────┘   │
-│              │                                     │                │
-│              │ Web Bluetooth                       │ REST API       │
-│              ▼                                     ▼                │
-│  ┌───────────────────────┐         ┌──────────────────────────┐    │
-│  │   Wearable Devices    │         │     Google Gemini AI      │    │
-│  │                       │         │                            │    │
-│  │  • Apple Watch        │         │  • Daily Insights          │    │
-│  │  • Fitbit             │         │  • Recommendations         │    │
-│  │  • Garmin             │         │  • Timeline Analysis       │    │
-│  │  • Samsung Watch      │         │  • Fallback if no API key  │    │
-│  │  • Mi Band / Amazfit  │         │                            │    │
-│  │  • Any BLE HR Monitor │         └──────────────────────────┘    │
-│  └───────────────────────┘                                          │
-└─────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph LR
+    A[React Frontend] -->|API Proxy| B[Express Server]
+    B --> C[SQLite via Prisma]
+    B --> D[Gemini AI]
+    A -->|Web Bluetooth| E[Wearable Device]
 ```
 
 ### Data Flow
@@ -55,6 +31,30 @@ Wearable / Simulation ──▶ Sensor Reading ──▶ Neuroception Engine ─
                                                     ▼
                                           SQLite DB (per user)
 ```
+
+### Server (Express + TypeScript + Prisma)
+| Component | Files | Purpose |
+|-----------|-------|---------|
+| Auth | `auth.service.ts`, `auth.routes.ts` | JWT + bcrypt, register/login |
+| Neuroception | `neuroception.service.ts`, `session.routes.ts` | 6-sensor scoring engine, sessions |
+| AI | `gemini.service.ts`, `insight.routes.ts` | Gemini insights with fallback |
+| Middleware | `auth.middleware.ts`, `error.middleware.ts` | JWT verification, error handling |
+| Database | `schema.prisma` | User, Session, SensorReading, Intervention, DailyReflection |
+
+### Client (Vite + React 19 + TypeScript)
+| Page | Key Features |
+|------|-------------|
+| LandingPage | Animated halo, use case tabs, safeguards |
+| AuthPage | Login/signup with JWT |
+| DashboardPage | Live sensors, body halo, wearable, interventions |
+| ReflectionPage | Timeline, AI insights |
+| ProfilePage | Settings, safeguards |
+
+| Component | Purpose |
+|-----------|---------|
+| WearablePicker | Branded device selector modal |
+| useWearable | Web Bluetooth API hook |
+| Layout | Responsive navbar + mobile drawer |
 
 ## Key Features
 
@@ -118,8 +118,8 @@ Wearable / Simulation ──▶ Sensor Reading ──▶ Neuroception Engine ─
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-repo/safesignal.git
-cd safesignal
+git clone https://github.com/ritikiitg/SafeSignal.git
+cd SafeSignal
 
 # 2. Setup the server
 cd server
@@ -184,7 +184,8 @@ SafeSignal/
 │       ├── middleware/             # Auth + error handling
 │       └── index.ts               # Express app entry
 │
-├── build-plan.txt                  # Product specification
+├── idea.txt                        # Product concept
+├── walkthrough.md                  # Build walkthrough & verification
 └── README.md
 ```
 
@@ -231,6 +232,17 @@ During a meeting, voice flattens and posture tightens. SafeSignal drops from Saf
 ### 3. End-of-Day Reflection
 Ritika reviews her daily window-of-tolerance timeline. She sees which moments drained her and which restored her. The app recommends behavior changes.
 > **Outcome:** Stronger self-understanding and better planning.
+
+## Build Verification
+
+| Check | Result |
+|-------|--------|
+| Client `vite build` | ✅ 109 modules, 0 errors, 1.30s |
+| Server runs | ✅ Port 3001, Helmet + Rate Limiting + Compression |
+| Client dev server | ✅ Vite 7.3.1, HMR active |
+| npm install (client) | ✅ 76 packages, 0 vulnerabilities |
+| npm install (server) | ✅ 278 packages |
+| Prisma DB push | ✅ SQLite database ready |
 
 ## Future Roadmap
 
