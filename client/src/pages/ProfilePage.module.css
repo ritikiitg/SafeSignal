@@ -1,0 +1,153 @@
+.page {
+    animation: fadeIn 0.5s ease;
+}
+
+.page h1 {
+    margin-bottom: var(--space-1);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.section h3 {
+    margin-bottom: var(--space-4);
+}
+
+.field {
+    margin-bottom: var(--space-4);
+}
+
+.field label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.hint {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+}
+
+.radioGroup {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.radio {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all var(--transition-fast);
+}
+
+.radio input {
+    display: none;
+}
+
+.radioActive {
+    background: var(--color-accent-gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.settingsCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.toggleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.toggleRow:last-of-type {
+    border-bottom: none;
+}
+
+.toggleRow strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.toggleRow p {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    border: none;
+    background: var(--color-bg-tertiary);
+    cursor: pointer;
+    position: relative;
+    transition: background var(--transition-fast);
+}
+
+.toggleOn {
+    background: var(--color-safe);
+}
+
+.toggleThumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast);
+}
+
+.toggleOn .toggleThumb {
+    transform: translateX(20px);
+}
+
+.safeguardRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+}
+
+.safeguardRow strong {
+    display: block;
+    font-size: 0.88rem;
+}
+
+.safeguardRow p {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.safeguardBadge {
+    margin-left: auto;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    background: rgba(103, 216, 180, 0.15);
+    color: var(--color-safe);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

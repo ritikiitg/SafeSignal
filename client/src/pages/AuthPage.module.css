@@ -1,0 +1,110 @@
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-gradient);
+    padding: var(--space-8);
+    position: relative;
+}
+
+.brand {
+    color: white;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease;
+}
+
+.logo {
+    height: 36px;
+    margin-bottom: var(--space-6);
+    filter: brightness(100);
+}
+
+.brand h1 {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-4);
+    color: white;
+}
+
+.brand p {
+    opacity: 0.9;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8);
+}
+
+.formCard {
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.6s ease;
+}
+
+.formCard h2 {
+    margin-bottom: var(--space-1);
+}
+
+.subtext {
+    margin-bottom: var(--space-6);
+    font-size: 0.9rem;
+}
+
+.field {
+    margin-bottom: var(--space-4);
+}
+
+.field label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.error {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: rgba(238, 124, 124, 0.1);
+    color: var(--color-negative);
+    font-size: 0.85rem;
+    margin-bottom: var(--space-4);
+}
+
+.switch {
+    margin-top: var(--space-6);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.switchBtn {
+    background: none;
+    border: none;
+    color: var(--color-accent-primary);
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+
+    .left {
+        min-height: 30vh;
+        padding: var(--space-6);
+    }
+
+    .brand h1 {
+        font-size: 1.5rem;
+    }
+}

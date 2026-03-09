@@ -1,0 +1,210 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 600;
+    width: 90%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-5);
+    animation: fadeIn 0.25s ease;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.modalHeader h3 {
+    font-size: 1.15rem;
+}
+
+.closeBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+    background: var(--color-bg-tertiary);
+}
+
+.sectionLabel {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.sectionLabel:first-of-type {
+    margin-top: 0;
+}
+
+.optionList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.optionRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-xl);
+    border: 1.5px solid var(--color-border);
+    background: var(--color-bg-card);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-sans);
+    text-align: left;
+    width: 100%;
+}
+
+.optionRow:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+.optionSelected {
+    border-color: var(--color-safe) !important;
+    background: rgba(103, 216, 180, 0.05);
+}
+
+.optionRow:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.optionIcon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.optionInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.optionName {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--color-text-primary);
+}
+
+.optionSub {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    margin-top: 1px;
+}
+
+.optionRadio {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+}
+
+.radioActive {
+    border-color: var(--color-safe);
+    background: var(--color-safe);
+}
+
+.radioCheck {
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.footer {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer p {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.footer strong {
+    color: var(--color-text-secondary);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .modal {
+        width: 95%;
+        padding: var(--space-4);
+        max-height: 80vh;
+    }
+
+    .optionRow {
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .optionIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .optionName {
+        font-size: 0.85rem;
+    }
+}

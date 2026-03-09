@@ -1,0 +1,106 @@
+// Prisma Schema for SafeSignal
+// Neuroception Wellness Platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+
+  // Password Reset
+  resetToken       String?   @unique
+  resetTokenExpiry DateTime?
+
+  // User Profile for personalization
+  sensitivityLevel String @default("medium") // low, medium, high
+  priorities       String @default("[]")     // JSON array of wellness priorities
+  currentContext   String?                   // life context for AI
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions      Session[]
+  interventions Intervention[]
+  reflections   DailyReflection[]
+}
+
+model Session {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  label     String?  // e.g., "Morning Commute", "Team Meeting"
+  state     String   @default("safe") // safe, guarded, overloaded
+  confidence Int     @default(0) // 0-100
+
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+
+  readings      SensorReading[]
+  interventions Intervention[]
+
+  @@index([userId, startedAt(sort: Desc)])
+}
+
+model SensorReading {
+  id        String  @id @default(cuid())
+  sessionId String
+  session   Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  breathPace       Float? // percentage change
+  jawTension       Float?
+  postureCollapse  Float?
+  skinConductance  Float?
+  voiceStrain      Float?
+  motionRestless   Float?
+
+  computedState  String @default("safe") // safe, guarded, overloaded
+  confidence     Int    @default(0)
+
+  recordedAt DateTime @default(now())
+
+  @@index([sessionId, recordedAt(sort: Desc)])
+}
+
+model Intervention {
+  id        String  @id @default(cuid())
+  sessionId String
+  session   Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type        String  // grounding_haptic, quiet_route, alert_pause, micro_reset, light_adjust, audio_dampen
+  label       String  // Human-readable label
+  description String?
+  accepted    Boolean @default(false)
+
+  triggeredAt DateTime @default(now())
+
+  @@index([sessionId])
+}
+
+model DailyReflection {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  date           String  // YYYY-MM-DD
+  timelineData   String  // JSON: array of { period, label, state, duration }
+  insight        String? // AI-generated insight
+  recommendation String? // AI-generated recommendation
+  overallState   String  @default("safe")
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, date])
+  @@index([userId, date(sort: Desc)])
+}

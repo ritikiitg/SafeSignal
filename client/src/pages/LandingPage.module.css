@@ -1,0 +1,442 @@
+.landing {
+    overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: var(--space-8);
+}
+
+.haloContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.haloRing {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--color-safe);
+    animation: haloExpand 4s ease-in-out infinite;
+}
+
+.haloRing:nth-child(2) {
+    inset: 40px;
+}
+
+.haloRing:nth-child(3) {
+    inset: 80px;
+}
+
+.haloRing:nth-child(4) {
+    inset: 120px;
+}
+
+.haloRing:nth-child(5) {
+    inset: 160px;
+}
+
+@keyframes haloExpand {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.06);
+    }
+}
+
+.topNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topLogo {
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+}
+
+.topBrandName {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    animation: fadeIn 0.8s ease;
+}
+
+.heroContent h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-4);
+}
+
+.highlight {
+    background: var(--color-accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heroSub {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-8);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent-primary);
+    margin-bottom: var(--space-2);
+}
+
+/* Sections */
+.section {
+    padding: var(--space-16) var(--space-8);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.sectionAlt {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-2xl);
+    max-width: 100%;
+}
+
+.sectionAlt .section {
+    max-width: 1000px;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.sectionHeader h2 {
+    margin-bottom: var(--space-2);
+}
+
+.sectionHeader p {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* Problem */
+.problemGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.problemCard h3 {
+    margin-bottom: var(--space-2);
+    font-size: 1.1rem;
+}
+
+/* Neuroception */
+.neuroFlow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    padding: 0 var(--space-8);
+}
+
+.neuroStep {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.neuroIcon {
+    font-size: 1.5rem;
+}
+
+.neuroArrow {
+    color: var(--color-accent-primary);
+    font-size: 1.2rem;
+    margin: 0 var(--space-2);
+}
+
+/* Use Cases */
+.useCaseTabs {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.tab:hover {
+    border-color: var(--color-border-hover);
+}
+
+.tabActive {
+    background: var(--color-accent-gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.useCaseDetail {
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.useCaseDesc {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+}
+
+.useCaseOutcome {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    background: rgba(103, 216, 180, 0.1);
+    color: var(--color-safe);
+    font-size: 0.9rem;
+}
+
+/* Safeguards */
+.safeguardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    padding: 0 var(--space-8);
+}
+
+.safeguardCard {
+    text-align: center;
+}
+
+.sgIcon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.safeguardCard h4 {
+    margin-bottom: var(--space-1);
+    font-size: 0.95rem;
+}
+
+.safeguardCard p {
+    font-size: 0.82rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: var(--space-8) var(--space-4);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1024px) {
+    .section {
+        padding: var(--space-12) var(--space-6);
+    }
+
+    .safeguardGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-3);
+        padding: 0 var(--space-4);
+    }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 90vh;
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .haloContainer {
+        width: 350px;
+        height: 350px;
+    }
+
+    .heroContent h1 {
+        font-size: 1.8rem;
+    }
+
+    .heroSub {
+        font-size: 0.95rem;
+    }
+
+    .topNav {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .topLogo {
+        height: 28px;
+        width: 28px;
+        border-radius: 6px;
+    }
+
+    .section {
+        padding: var(--space-8) var(--space-4);
+    }
+
+    .sectionHeader h2 {
+        font-size: 1.5rem;
+    }
+
+    .problemGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .safeguardGrid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 var(--space-2);
+    }
+
+    .neuroFlow {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .neuroArrow {
+        transform: rotate(90deg);
+    }
+
+    .neuroStep {
+        font-size: 0.82rem;
+    }
+
+    .tab {
+        padding: var(--space-2) var(--space-4);
+        font-size: 0.82rem;
+    }
+
+    .useCaseDesc {
+        font-size: 0.9rem;
+    }
+}
+
+/* ─── Small Mobile ─── */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 85vh;
+        padding: var(--space-4) var(--space-3);
+        padding-top: 80px;
+    }
+
+    .haloContainer {
+        width: 260px;
+        height: 260px;
+    }
+
+    .heroContent h1 {
+        font-size: 1.5rem;
+    }
+
+    .heroSub {
+        font-size: 0.85rem;
+        margin-bottom: var(--space-6);
+    }
+
+    .label {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+
+    .section {
+        padding: var(--space-6) var(--space-3);
+    }
+
+    .sectionHeader h2 {
+        font-size: 1.25rem;
+    }
+
+    .sectionHeader p {
+        font-size: 0.85rem;
+    }
+
+    .problemCard h3 {
+        font-size: 0.95rem;
+    }
+
+    .safeguardGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+    }
+
+    .sgIcon {
+        font-size: 1.4rem;
+    }
+
+    .safeguardCard h4 {
+        font-size: 0.85rem;
+    }
+
+    .safeguardCard p {
+        font-size: 0.75rem;
+    }
+
+    .footer {
+        padding: var(--space-6) var(--space-3);
+        font-size: 0.72rem;
+    }
+}

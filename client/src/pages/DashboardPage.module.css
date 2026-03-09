@@ -1,0 +1,445 @@
+.dashboard {
+    animation: fadeIn 0.5s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.header h1 {
+    margin-bottom: var(--space-1);
+}
+
+/* Wearable Panel */
+.wearablePanel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+}
+
+.connectBtn {
+    font-size: 0.88rem;
+}
+
+.wearableConnected {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-safe);
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.wearableDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-safe);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.wearableHr {
+    font-weight: 700;
+    color: var(--color-negative);
+    font-family: var(--font-heading);
+}
+
+.wearableBtn {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: transparent;
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all var(--transition-fast);
+}
+
+.wearableBtn:hover {
+    background: var(--color-negative);
+    color: white;
+    border-color: var(--color-negative);
+}
+
+.wearableError {
+    font-size: 0.75rem;
+    color: var(--color-negative);
+    margin: 0;
+}
+
+.sourceBadge {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-muted);
+}
+
+.hrRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    background: rgba(238, 124, 124, 0.08);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2);
+    font-size: 0.88rem;
+}
+
+.hrValue {
+    font-weight: 700;
+    color: var(--color-negative);
+    font-family: var(--font-heading);
+}
+
+.srcTag {
+    font-size: 0.65rem;
+    opacity: 0.6;
+}
+
+.historyNote {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+}
+
+.sessionInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sessionState {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+/* State Card */
+.stateCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-8);
+}
+
+.bodyVisual {
+    margin-bottom: var(--space-4);
+}
+
+.halo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bodyPulse 2.5s ease-in-out infinite;
+    transition: all 0.5s ease;
+}
+
+.haloInner {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid;
+    opacity: 0.5;
+    animation: bodyPulse 2.5s ease-in-out infinite reverse;
+}
+
+@keyframes bodyPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.stateInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.stateChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.confidence {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.bodyCopy {
+    font-style: italic;
+    font-size: 0.9rem;
+    max-width: 280px;
+}
+
+/* Sensors Card */
+.sensorsCard h3 {
+    margin-bottom: var(--space-4);
+}
+
+.sensorList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sensorRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+}
+
+.sensorRow:nth-child(odd) {
+    background: var(--color-bg-tertiary);
+}
+
+.sensorVal {
+    font-weight: 600;
+}
+
+.sensorWarn {
+    color: var(--color-warning);
+}
+
+/* Interventions */
+.interventionCard h3 {
+    margin-bottom: var(--space-1);
+}
+
+.primaryAction {
+    display: block;
+    width: 100%;
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-bottom: var(--space-3);
+}
+
+.primaryAction:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.primaryAction:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.interventionItem {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.interventionItem:hover {
+    background: var(--color-bg-tertiary);
+}
+
+.ivIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.interventionItem strong {
+    font-size: 0.88rem;
+    display: block;
+}
+
+.interventionItem p {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+/* Sessions */
+.sessionsCard h3 {
+    margin-bottom: var(--space-3);
+}
+
+.sessionList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sessionItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+}
+
+.sessionItem:hover {
+    background: var(--color-bg-tertiary);
+}
+
+.sessionMeta {
+    margin-left: auto;
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1024px) {
+    .grid {
+        gap: var(--space-3);
+    }
+
+    .stateCard {
+        padding: var(--space-6);
+    }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stateCard {
+        padding: var(--space-5);
+    }
+
+    .halo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .haloInner {
+        width: 70px;
+        height: 70px;
+    }
+
+    .confidence {
+        font-size: 2.2rem;
+    }
+
+    .bodyCopy {
+        font-size: 0.82rem;
+        max-width: 240px;
+    }
+
+    .sensorRow {
+        font-size: 0.82rem;
+        padding: var(--space-2);
+    }
+
+    .interventionItem {
+        padding: var(--space-2);
+    }
+
+    .ivIcon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .primaryAction {
+        padding: var(--space-4);
+        font-size: 1rem;
+    }
+}
+
+/* ─── Small Mobile ─── */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    .halo {
+        width: 90px;
+        height: 90px;
+        border-width: 2px;
+    }
+
+    .haloInner {
+        width: 56px;
+        height: 56px;
+    }
+
+    .confidence {
+        font-size: 1.8rem;
+    }
+
+    .stateChip {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    .sensorRow {
+        font-size: 0.78rem;
+    }
+
+    .sessionItem {
+        font-size: 0.8rem;
+    }
+}

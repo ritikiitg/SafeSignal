@@ -1,0 +1,160 @@
+.page {
+    animation: fadeIn 0.5s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+}
+
+.header h1 {
+    margin-bottom: var(--space-1);
+}
+
+.timelineCard {
+    margin-bottom: var(--space-4);
+}
+
+.timelineCard h3 {
+    margin-bottom: var(--space-4);
+}
+
+.timelineBar {
+    display: flex;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 40px;
+}
+
+.segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.segLabel {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.timeLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.activitiesCard h3 {
+    margin-bottom: var(--space-3);
+}
+
+.actList {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.actItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+}
+
+.actIcon {
+    font-size: 1.2rem;
+}
+
+.actInfo {
+    flex: 1;
+}
+
+.actInfo strong {
+    display: block;
+    font-size: 0.88rem;
+}
+
+.actInfo span {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.actChip {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.insightCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.insightCard h4 {
+    margin-bottom: var(--space-2);
+    font-size: 0.95rem;
+}
+
+.insightCard p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.statsCard h4 {
+    margin-bottom: var(--space-3);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-2);
+    text-align: center;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.statNum {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+}

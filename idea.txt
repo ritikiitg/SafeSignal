@@ -1,0 +1,7 @@
+Safe Signal
+Sense tracked: Neuroception, the body's pre-conscious sense of safety vs danger.
+User: A student or young professional with social anxiety, trauma history, or shutdown/freeze patterns.
+Concept: A wearable plus ambient interface that detects micro-signals like breath shortening, jaw tension, voice flattening, posture collapse, and skin conductance before the user consciously realizes they feel unsafe.
+What it visualizes: A live "window of tolerance" map showing when the body is open, guarded, or near overload.
+How it manipulates the sense: It softens lighting, filters harsh audio frequencies, paces notifications, and triggers grounding haptics to help the body return to safety.
+Core Strength: It is emotionally powerful, medically adjacent without needing full clinical proof, and gives you a dramatic before/after story.
